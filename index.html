@@ -15,11 +15,12 @@
     <a-scene environmentmap="auto:false" physics="debug: false; driver: ammo;">
         <a-assets>
             <img src="sky.png" id="sky"></img>
+            <img src="blue-snow.webp" id="floor"></img>
             <a-asset-item src="palm.glb" id="palm"></a-asset-item>
             <a-asset-item src="table.glb" id="table"></a-asset-item>
         </a-assets>
         <a-sky src="#sky"></a-sky>
-        <a-plane ammo-body="type: static" ammo-shape="type: box" rotation="-90 0 0" width="200" height="200" id="floor" shadow="receive: true;" repeat="100 100" src="blue-snow.webp" color="lightgrey" material="metalness:0;roughness:1;"></a-plane>
+        <a-plane ammo-body="type: static" ammo-shape="type: box" rotation="-90 0 0" width="200" height="200" id="floor" shadow="receive: true;" repeat="100 100" src="#floor" color="lightgrey" material="metalness:0;roughness:1;"></a-plane>
         <a-gltf-model src="#palm" scale="0.002 0.002 0.002" shadow="cast: true;" position="3 0 -3"></a-gltf-model>
         <a-gltf-model src="#table" position="0 0.52 -2.43" shadow="cast:true;"></a-gltf-model>
 
