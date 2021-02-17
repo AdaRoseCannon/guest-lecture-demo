@@ -5,30 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFrame Demo</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@45e728efa8dba6a230592b49d2c133185c3baccd/dist/aframe-master.min.js"></script>
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
-    <script src="environmentmap.js"></script>
 </head>
 <body>
     
-    <a-scene environmentmap="auto:false" physics="debug: false; driver: ammo;">
+    <a-scene environmentmap="auto:false" physics="debug: false; driver: ammo;" background="color:hotpink">
         <a-assets>
             <img src="sky.png" id="sky"></img>
             <img src="blue-snow.webp" id="floor"></img>
             <a-asset-item src="palm.glb" id="palm"></a-asset-item>
             <a-asset-item src="table.glb" id="table"></a-asset-item>
         </a-assets>
+
+        <a-entity light="color: #BBB; type: ambient"></a-entity>
+        <a-entity light="intensity: 0.6; castShadow: true; shadowCameraFov: 120; shadowCameraTop: 8; shadowCameraBottom: -5.15" position="-0.5 1 1"></a-entity>
+        
         <a-sky src="#sky"></a-sky>
         <a-plane ammo-body="type: static" ammo-shape="type: box" rotation="-90 0 0" width="200" height="200" id="floor" shadow="receive: true;" repeat="100 100" src="#floor" color="lightgrey" material="metalness:0;roughness:1;"></a-plane>
         <a-gltf-model src="#palm" scale="0.002 0.002 0.002" shadow="cast: true;" position="3 0 -3"></a-gltf-model>
         <a-gltf-model src="#table" position="0 0.52 -2.43" shadow="cast:true;"></a-gltf-model>
 
         <a-cylinder visible="false" position="0 1.0 -2.43" height="0.1" ammo-body="type: static" ammo-shape="type: cylinder"></a-cylinder>
-        <a-box ammo-body="type: dynamic;" ammo-shape="type: box" color="hotpink" rotation="30 30 0" width="0.15" height="0.15" depth="0.15" position="0 1.3 -2.43"></a-box>
+        <a-box ammo-body="type: dynamic;" ammo-shape="type: box" color="hotpink" rotation="30 30 0" width="0.15" height="0.15" depth="0.15" position="0 1.75 -2.43"></a-box>
         <a-box ammo-body="type: dynamic;" ammo-shape="type: box" color="cyan" rotation="-30 30 0" width="0.15" height="0.15" depth="0.15" position="0 1.45 -2.43"></a-box>
         <a-box ammo-body="type: dynamic;" ammo-shape="type: box" color="yellow" rotation="30 -30 0" width="0.15" height="0.15" depth="0.15" position="0 1.6 -2.43"></a-box>
-
+        <a-torus-knot animation="property: rotation; to: 0 0 120; loop: true; dur: 2000; easing: linear;" radius="0.15" radius-tubular="0.03" shadow="cast:true;" position="0.8 1.4 -2.43" material="metalness:1;roughness:0.2;"></a-torus-knot>
     </a-scene>
 </body>
 </html>
